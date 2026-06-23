@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 // Importer les routes
 const authRoutes = require('./routes/auth');
@@ -15,6 +17,20 @@ const PORT = process.env.PORT || 5000;
 // ============================================
 // MIDDLEWARE GLOBAUX
 // ============================================
+
+// Protection des en-têtes HTTP
+app.use(helmet());
+
+// Limiteur de débit global (limite chaque IP à 100 requêtes par 15 minutes)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, 
+  message: { error: 'Trop de requêtes depuis cette IP, veuillez réessayer après 15 minutes.' }
+});
+
+// Appliquer le limiter à toutes les routes d'API
+app.use('/api', limiter);
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
