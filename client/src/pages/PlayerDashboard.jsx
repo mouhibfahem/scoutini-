@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Award, Video, FileText, Upload, Plus, Trash2, Check, AlertCircle, Save, Calendar, Shield, ShieldAlert, Mail, Phone, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 export default function PlayerDashboard() {
   const { t, language } = useLanguage();
@@ -71,7 +72,7 @@ export default function PlayerDashboard() {
   const fetchReceivedTrials = async () => {
     setTrialsLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/trials/received', {
+      const res = await fetch(`${API_BASE_URL}/api/trials/received`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -89,7 +90,7 @@ export default function PlayerDashboard() {
     setError('');
     setSuccess('');
     try {
-      const res = await fetch(`http://localhost:5000/api/trials/${id}/respond`, {
+      const res = await fetch(`${API_BASE_URL}/api/trials/${id}/respond`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +110,7 @@ export default function PlayerDashboard() {
 
   const fetchProfile = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/me', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -169,7 +170,7 @@ export default function PlayerDashboard() {
     formData.append('avatar', file);
 
     try {
-      const res = await fetch('http://localhost:5000/api/players/avatar', {
+      const res = await fetch(`${API_BASE_URL}/api/players/avatar`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData
@@ -187,7 +188,7 @@ export default function PlayerDashboard() {
 
   const fetchMyVideos = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/videos/my', {
+      const res = await fetch(`${API_BASE_URL}/api/videos/my`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -212,7 +213,7 @@ export default function PlayerDashboard() {
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/players/profile', {
+      const res = await fetch(`${API_BASE_URL}/api/players/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -243,7 +244,7 @@ export default function PlayerDashboard() {
     }, {});
 
     try {
-      const res = await fetch('http://localhost:5000/api/players/stats', {
+      const res = await fetch(`${API_BASE_URL}/api/players/stats`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -278,7 +279,7 @@ export default function PlayerDashboard() {
     formData.append('video', videoFile);
 
     try {
-      const res = await fetch('http://localhost:5000/api/videos', {
+      const res = await fetch(`${API_BASE_URL}/api/videos`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData
@@ -306,7 +307,7 @@ export default function PlayerDashboard() {
     setSuccess('');
 
     try {
-      const res = await fetch(`http://localhost:5000/api/videos/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/videos/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -340,7 +341,7 @@ export default function PlayerDashboard() {
             <div className="relative w-24 h-24 mx-auto mb-4 group/avatar">
               {player && player.avatar ? (
                 <img 
-                  src={`http://localhost:5000${player.avatar}`} 
+                  src={`${API_BASE_URL}${player.avatar}`} 
                   alt="Avatar" 
                   className="w-full h-full object-cover rounded-full border-2 border-primary" 
                 />
@@ -796,7 +797,7 @@ export default function PlayerDashboard() {
                       <div key={v.id} className="bg-[#070D14] rounded-2xl border border-white/5 overflow-hidden flex flex-col justify-between">
                         <div className="aspect-video relative bg-black flex items-center justify-center">
                           <video 
-                            src={`http://localhost:5000${v.videoUrl}`} 
+                            src={`${API_BASE_URL}${v.videoUrl}`} 
                             controls 
                             className="w-full h-full object-contain"
                           />
@@ -856,7 +857,7 @@ export default function PlayerDashboard() {
                           <div className={`flex items-start gap-4 ${isRtl ? 'flex-row-reverse text-right' : ''}`}>
                             <div className="relative flex-shrink-0">
                               {avatar ? (
-                                <img src={`http://localhost:5000${avatar}`} alt="Avatar" className="w-12 h-12 rounded-full object-cover border border-primary/30" />
+                                <img src={`${API_BASE_URL}${avatar}`} alt="Avatar" className="w-12 h-12 rounded-full object-cover border border-primary/30" />
                               ) : (
                                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-white">
                                   {scoutName[0]}

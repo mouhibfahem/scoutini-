@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Calendar, Award, SlidersHorizontal, Eye } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 export default function SearchTalents() {
   const { t, language } = useLanguage();
@@ -44,7 +45,7 @@ export default function SearchTalents() {
   const fetchPlayers = async (page = 1) => {
     setLoading(true);
     try {
-      let url = `http://localhost:5000/api/players?page=${page}&limit=12`;
+      let url = `${API_BASE_URL}/api/players?page=${page}&limit=12`;
       if (search) url += `&search=${encodeURIComponent(search)}`;
       if (position) url += `&position=${encodeURIComponent(position)}`;
       if (region) url += `&region=${encodeURIComponent(region)}`;

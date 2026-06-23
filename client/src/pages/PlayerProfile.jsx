@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Award, MapPin, Calendar, Heart, Send, Check, Play, User, Phone, Video, AlertCircle, Eye } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 export default function PlayerProfile({ currentUser }) {
   const { id } = useParams();
@@ -30,7 +31,7 @@ export default function PlayerProfile({ currentUser }) {
 
   const fetchPlayerProfile = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/players/${id}`);
+      const res = await fetch(`${API_BASE_URL}/api/players/${id}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setPlayer(data.player);
@@ -43,7 +44,7 @@ export default function PlayerProfile({ currentUser }) {
 
   const checkIfFavorited = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/favorites', {
+      const res = await fetch(`${API_BASE_URL}/api/favorites`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
@@ -66,7 +67,7 @@ export default function PlayerProfile({ currentUser }) {
     setFavoriteLoading(true);
     try {
       const method = isFavorited ? 'DELETE' : 'POST';
-      const res = await fetch(`http://localhost:5000/api/favorites/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/favorites/${id}`, {
         method,
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -87,7 +88,7 @@ export default function PlayerProfile({ currentUser }) {
     setTrialSending(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/trials', {
+      const res = await fetch(`${API_BASE_URL}/api/trials`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +204,7 @@ export default function PlayerProfile({ currentUser }) {
             <div className="w-28 h-28 relative">
               {player.avatar ? (
                 <img 
-                  src={`http://localhost:5000${player.avatar}`} 
+                  src={`${API_BASE_URL}${player.avatar}`} 
                   alt="Avatar" 
                   className="w-full h-full object-cover rounded-full border-2 border-primary" 
                 />
@@ -377,7 +378,7 @@ export default function PlayerProfile({ currentUser }) {
                 <div key={v.id} className="bg-[#070D14] rounded-2xl border border-white/5 overflow-hidden flex flex-col justify-between">
                   <div className="aspect-video relative bg-black flex items-center justify-center">
                     <video 
-                      src={`http://localhost:5000${v.videoUrl}`} 
+                      src={`${API_BASE_URL}${v.videoUrl}`} 
                       controls 
                       className="w-full h-full object-contain"
                     />

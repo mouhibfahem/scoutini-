@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Send, Calendar, CheckCircle2, Clock, XCircle, Eye, Trash2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { API_BASE_URL } from '../config';
 
 export default function ScoutDashboard() {
   const { t, language } = useLanguage();
@@ -22,10 +23,10 @@ export default function ScoutDashboard() {
     setLoading(true);
     try {
       const [favRes, trialRes] = await Promise.all([
-        fetch('http://localhost:5000/api/favorites', {
+        fetch(`${API_BASE_URL}/api/favorites`, {
           headers: { 'Authorization': `Bearer ${token}` }
         }),
-        fetch('http://localhost:5000/api/trials/sent', {
+        fetch(`${API_BASE_URL}/api/trials/sent`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
       ]);
@@ -45,7 +46,7 @@ export default function ScoutDashboard() {
   const handleRemoveFavorite = async (playerId) => {
     if (!window.confirm(t('confirmRemoveFavorite'))) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/favorites/${playerId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/favorites/${playerId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

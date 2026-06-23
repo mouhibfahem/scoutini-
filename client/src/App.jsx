@@ -9,6 +9,7 @@ import ScoutDashboard from './pages/ScoutDashboard';
 import SearchTalents from './pages/SearchTalents';
 import PlayerProfile from './pages/PlayerProfile';
 
+import { API_BASE_URL } from './config';
 import './App.css';
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/me', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();

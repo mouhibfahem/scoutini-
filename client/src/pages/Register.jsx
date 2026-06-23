@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { User, Shield, Building, Mail, Lock, UserPlus, AlertCircle, ArrowRight, Calendar, ShieldAlert } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LegalModals from '../components/common/LegalModals';
+import { API_BASE_URL } from '../config';
 
 export default function Register({ onLoginSuccess }) {
   const { t, language } = useLanguage();
@@ -88,7 +89,7 @@ export default function Register({ onLoginSuccess }) {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
