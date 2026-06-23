@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scoutini — Guide Juridique : Protection des Mineurs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    
+    :root {
+      --primary: #10B981;
+      --primary-dark: #059669;
+      --danger: #EF4444;
+      --warning: #F59E0B;
+      --info: #3B82F6;
+      --dark: #0F172A;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-300: #CBD5E1;
+      --gray-500: #64748B;
+      --gray-700: #334155;
+      --gray-900: #0F172A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--gray-900);
+      line-height: 1.7;
+      background: #fff;
+      font-size: 11pt;
+    }
+
+    @page {
+      size: A4;
+      margin: 20mm 18mm 25mm 18mm;
+    }
+
+    @media print {
+      body { font-size: 10pt; }
+      .page-break { page-break-before: always; }
+      .no-break { page-break-inside: avoid; }
+      .cover-page { page-break-after: always; }
+    }
+
+    /* ============ COVER PAGE ============ */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .cover-logo {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+    }
+
+    .cover-title {
+      font-size: 36pt;
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .cover-subtitle {
+      font-size: 16pt;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .cover-tagline {
+      font-size: 12pt;
+      color: var(--gray-500);
+      max-width: 500px;
+      margin-bottom: 50px;
+    }
+
+    .cover-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 10pt;
+      color: var(--gray-500);
+      border-top: 2px solid var(--gray-200);
+      padding-top: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .cover-meta strong { color: var(--gray-700); }
+
+    .tunisia-flag {
+      display: flex;
+      gap: 0;
+      margin: 20px 0;
+      border-radius: 6px;
+      overflow: hidden;
+      width: 80px;
+      height: 50px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .tunisia-flag .red { background: #E70013; flex: 1; display: flex; align-items: center; justify-content: center; }
+    .tunisia-flag .white-circle { width: 26px; height: 26px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .tunisia-flag .red-inner { color: #E70013; font-size: 14px; }
+
+    /* ============ DISCLAIMER ============ */
+    .disclaimer {
+      background: #FEF2F2;
+      border: 2px solid #FECACA;
+      border-left: 6px solid var(--danger);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 30px 0;
+      font-size: 10pt;
+    }
+
+    .disclaimer-title {
+      color: var(--danger);
+      font-weight: 800;
+      font-size: 11pt;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .disclaimer p { color: #991B1B; line-height: 1.6; }
+
+    /* ============ TABLE OF CONTENTS ============ */
+    .toc {
+      background: var(--gray-100);
+      border-radius: 16px;
+      padding: 30px 32px;
+      margin: 30px 0;
+    }
+
+    .toc h2 {
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    .toc ol {
+      padding-left: 20px;
+      counter-reset: toc-counter;
+    }
+
+    .toc li {
+      padding: 6px 0;
+      font-size: 11pt;
+      font-weight: 500;
+      color: var(--gray-700);
+      list-style: none;
+      counter-increment: toc-counter;
+    }
+
+    .toc li::before {
+      content: counter(toc-counter) ".";
+      color: var(--primary);
+      font-weight: 800;
+      margin-right: 10px;
+    }
+
+    /* ============ SECTION HEADERS ============ */
+    h1 {
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--dark);
+      margin: 40px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 15pt;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 30px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 .emoji { font-size: 18pt; }
+
+    h3 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin: 20px 0 8px;
+    }
+
+    p { margin: 8px 0; color: var(--gray-700); }
+
+    /* ============ TABLES ============ */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 10pt;
+    }
+
+    thead th {
+      background: var(--dark);
+      color: white;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    thead th:first-child { border-radius: 8px 0 0 0; }
+    thead th:last-child { border-radius: 0 8px 0 0; }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-200);
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) { background: var(--gray-100); }
+    tbody tr:hover { background: #ECFDF5; }
+
+    /* ============ ALERT BOXES ============ */
+    .alert {
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 10.5pt;
+    }
+
+    .alert-title {
+      font-weight: 800;
+      font-size: 11pt;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .alert-important {
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+      border-left: 5px solid var(--info);
+    }
+    .alert-important .alert-title { color: var(--info); }
+    .alert-important p { color: #1E40AF; }
+
+    .alert-warning {
+      background: #FFFBEB;
+      border: 1.5px solid #FDE68A;
+      border-left: 5px solid var(--warning);
+    }
+    .alert-warning .alert-title { color: #B45309; }
+    .alert-warning p { color: #92400E; }
+
+    .alert-danger {
+      background: #FEF2F2;
+      border: 1.5px solid #FECACA;
+      border-left: 5px solid var(--danger);
+    }
+    .alert-danger .alert-title { color: var(--danger); }
+    .alert-danger p { color: #991B1B; }
+
+    .alert-success {
+      background: #ECFDF5;
+      border: 1.5px solid #A7F3D0;
+      border-left: 5px solid var(--primary);
+    }
+    .alert-success .alert-title { color: var(--primary-dark); }
+    .alert-success p { color: #065F46; }
+
+    /* ============ CODE / FLOW ============ */
+    .flow-box {
+      background: var(--dark);
+      color: #A5F3FC;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 16px 0;
+      font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+      font-size: 9.5pt;
+      line-height: 1.9;
+      white-space: pre-line;
+      overflow-x: auto;
+    }
+
+    .flow-box .comment { color: #64748B; }
+    .flow-box .highlight { color: #34D399; font-weight: 700; }
+    .flow-box .arrow { color: #F59E0B; }
+
+    /* ============ CHECKLIST ============ */
+    .checklist {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 16px 0;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 10.5pt;
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--gray-300);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-box.filled {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    /* ============ INTERDICTIONS ============ */
+    .forbidden-table td:first-child {
+      color: var(--danger);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 2px solid var(--gray-200);
+      text-align: center;
+      font-size: 9pt;
+      color: var(--gray-500);
+    }
+
+    .footer strong { color: var(--primary-dark); }
+
+    /* ============ CONTACT SECTION ============ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .contact-card {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .contact-card h4 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      font-size: 9.5pt;
+      color: var(--gray-500);
+      margin: 0;
+    }
+
+    .contact-card a {
+      color: var(--primary-dark);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* ============ PRIORITY SECTION ============ */
+    .priority-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .priority-card {
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+
+    .priority-card.urgent {
+      background: #FEF2F2;
+      border: 2px solid #FECACA;
+    }
+    .priority-card.urgent h4 { color: var(--danger); }
+
+    .priority-card.recommended {
+      background: #EFF6FF;
+      border: 2px solid #BFDBFE;
+    }
+    .priority-card.recommended h4 { color: var(--info); }
+
+    .priority-card h4 {
+      font-size: 11pt;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .priority-card ul {
+      padding-left: 18px;
+      font-size: 10pt;
+      color: var(--gray-700);
+    }
+
+    .priority-card li { padding: 3px 0; }
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      bottom: 10mm;
+      right: 15mm;
+      font-size: 8pt;
+      color: var(--gray-300);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================ -->
+  <!-- COVER PAGE -->
+  <!-- ============================================ -->
+  <div class="cover-page">
+    <div class="cover-logo">⚽</div>
+    <div class="cover-title">Guide Juridique</div>
+    <div class="cover-subtitle">Protection des Mineurs</div>
+    <div class="cover-tagline">
+      Cadre légal, obligations réglementaires et bonnes pratiques pour la plateforme Scoutini — Détection des talents footballistiques en Tunisie
+    </div>
+
+    <div class="tunisia-flag">
+      <div class="red">
+        <div class="white-circle">
+          <span class="red-inner">★</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-meta">
+      <span><strong>Plateforme :</strong> Scoutini TN</span>
+      <span><strong>Version du document :</strong> 1.0</span>
+      <span><strong>Date :</strong> Juin 2026</span>
+      <span><strong>Classification :</strong> Document interne — Confidentiel</span>
+      <span><strong>Juridiction :</strong> République Tunisienne 🇹🇳</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- DISCLAIMER -->
+  <!-- ============================================ -->
+  <div class="disclaimer no-break">
+    <div class="disclaimer-title">⚠️ AVERTISSEMENT LÉGAL</div>
+    <p>
+      Ce document est un <strong>guide informatif</strong> basé sur des recherches approfondies du cadre juridique tunisien et des réglementations FIFA/FTF. 
+      Il ne remplace <strong>en aucun cas</strong> un avis juridique professionnel. Avant le lancement de la plateforme, il est 
+      <strong>impératif</strong> de consulter un avocat spécialisé en droit du sport et en protection des mineurs en Tunisie, 
+      ainsi que l'Instance Nationale de Protection des Données Personnelles (INPDP).
+    </p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TABLE OF CONTENTS -->
+  <!-- ============================================ -->
+  <div class="toc no-break">
+    <h2>📑 Table des matières</h2>
+    <ol>
+      <li>Cadre Juridique Applicable en Tunisie</li>
+      <li>Réglementations FIFA &amp; Fédération Tunisienne de Football (FTF)</li>
+      <li>Obligations Légales de Scoutini — Ce que la Plateforme DOIT Faire</li>
+      <li>Interdictions — Ce que la Plateforme NE DOIT PAS Faire</li>
+      <li>Fonctionnalités de Protection à Implémenter</li>
+      <li>Documents Juridiques à Préparer</li>
+      <li>Contacts &amp; Ressources Utiles</li>
+      <li>Résumé des Priorités</li>
+    </ol>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1 -->
+  <!-- ============================================ -->
+  <h1>1. Cadre Juridique Applicable en Tunisie</h1>
+
+  <h2><span class="emoji">🇹🇳</span> Lois Tunisiennes</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 35%;">Texte de loi</th>
+        <th>Ce qu'il impose à Scoutini</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Code de Protection de l'Enfance (1995)</strong></td>
+        <td>Protection des enfants de moins de 18 ans contre toute forme d'exploitation, de violence et de négligence. S'applique aussi dans l'espace numérique.</td>
+      </tr>
+      <tr>
+        <td><strong>Loi Organique n° 2004-63</strong><br><em>Protection des données personnelles</em></td>
+        <td>Consentement obligatoire pour la collecte de données personnelles. Pour les mineurs, le consentement du <strong>parent ou tuteur légal</strong> est requis (Article 28). Déclaration obligatoire auprès de l'INPDP.</td>
+      </tr>
+      <tr>
+        <td><strong>INPDP</strong><br><em>Instance Nationale de Protection des Données Personnelles</em></td>
+        <td>Autorité de contrôle indépendante à laquelle Scoutini devra <strong>déclarer son traitement de données</strong> avant le lancement de la plateforme.</td>
+      </tr>
+      <tr>
+        <td><strong>Charte Nationale de Protection de l'Enfant dans l'Espace Numérique (2025)</strong></td>
+        <td>Nouveau cadre coordonné impliquant les opérateurs télécom, les FAI et les plateformes numériques pour la protection des mineurs en ligne. Impose des responsabilités sociales aux acteurs numériques.</td>
+      </tr>
+      <tr>
+        <td><strong>Convention de Lanzarote</strong><br><em>(Ratifiée par la Tunisie)</em></td>
+        <td>Criminalise la sollicitation de mineurs en ligne (« grooming »). Impose des mécanismes de signalement et de prévention sur les plateformes numériques.</td>
+      </tr>
+      <tr>
+        <td><strong>Décret-loi n° 54</strong><br><em>Cybercriminalité</em></td>
+        <td>Encadre les infractions liées à l'utilisation des technologies de l'information. S'articule avec la protection des données personnelles des mineurs.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-important no-break">
+    <div class="alert-title">ℹ️ POINT CLÉ — Article 28, Loi 2004-63</div>
+    <p>
+      Lorsque la personne concernée par le traitement de données est un <strong>mineur</strong>, le consentement doit être recueilli auprès 
+      du <strong>parent ou du tuteur légal</strong>. Ce consentement doit être vérifiable, révocable à tout moment, et documenté par le responsable du traitement.
+    </p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>2. Réglementations FIFA &amp; FTF</h1>
+
+  <h2><span class="emoji">⚽</span> Réglementations de la FIFA</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 35%;">Règle</th>
+        <th>Détail &amp; Implications</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Article 19 — RSTP</strong><br><em>Statut et Transfert des Joueurs</em></td>
+        <td>Les transferts internationaux de joueurs de <strong>moins de 18 ans sont interdits</strong>, sauf exceptions très strictes : 
+        (1) Déménagement des parents non lié au football, 
+        (2) Transferts UE/EEE pour les 16-18 ans avec obligations éducatives, 
+        (3) Règle des 50 km de la frontière.</td>
+      </tr>
+      <tr>
+        <td><strong>FIFA Transfer Matching System (TMS)</strong></td>
+        <td>Tous les transferts internationaux, y compris ceux impliquant des mineurs, doivent être traités via le système TMS de la FIFA.</td>
+      </tr>
+      <tr>
+        <td><strong>FIFA Guardians Toolkit</strong></td>
+        <td>Ressource officielle de la FIFA pour le développement de politiques de sauvegarde dans le football. Recommandé comme référence pour Scoutini.</td>
+      </tr>
+      <tr>
+        <td><strong>Registre des Académies</strong></td>
+        <td>Les associations nationales doivent tenir un registre de tous les mineurs jouant dans les académies professionnelles.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span class="emoji">🇹🇳</span> Fédération Tunisienne de Football (FTF)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 35%;">Obligation FTF</th>
+        <th>Détail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Autorisation parentale obligatoire</strong></td>
+        <td>Tout engagement d'un joueur mineur nécessite l'autorisation du <strong>père ou du tuteur légal</strong>. La signature du tuteur doit être <strong>légalisée</strong>. Le mineur doit également apposer sa propre signature.</td>
+      </tr>
+      <tr>
+        <td><strong>Contrats mineurs (16-18 ans)</strong></td>
+        <td>La durée du contrat de premier joueur professionnel ne peut pas excéder <strong>3 saisons maximum</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Suivi médical obligatoire</strong></td>
+        <td>Visite médicale complète obligatoire chaque saison au Centre National ou Régional de la Médecine Sportive, avant toute participation aux compétitions.</td>
+      </tr>
+      <tr>
+        <td><strong>Assurance obligatoire</strong></td>
+        <td>Souscription à un contrat d'assurance couvrant les accidents corporels — pièce indispensable au dossier d'homologation.</td>
+      </tr>
+      <tr>
+        <td><strong>Homologation des centres</strong></td>
+        <td>Les clubs et centres de formation privés doivent être homologués par la FTF et respecter un cahier des charges approuvé par le Ministère des Sports.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>3. Obligations Légales de Scoutini</h1>
+
+  <h2><span class="emoji">🔐</span> A. Consentement Parental Obligatoire</h2>
+
+  <div class="alert alert-danger no-break">
+    <div class="alert-title">🚨 OBLIGATION CRITIQUE</div>
+    <p>
+      Aucun mineur (joueur de moins de 18 ans) ne peut créer de profil, partager ses données personnelles, 
+      ni publier de vidéos sur Scoutini sans le consentement <strong>vérifié et documenté</strong> de son parent ou tuteur légal. 
+      C'est une obligation légale au titre de la Loi 2004-63 et du Code de Protection de l'Enfance.
+    </p>
+  </div>
+
+  <h3>Flux d'inscription recommandé pour les mineurs :</h3>
+
+  <div class="flow-box">
+<span class="highlight">Étape 1</span> <span class="arrow">→</span> Le joueur renseigne sa date de naissance à l'inscription
+    <span class="comment">      Si l'âge calculé est &lt; 18 ans, le flux parental est déclenché automatiquement</span>
+
+<span class="highlight">Étape 2</span> <span class="arrow">→</span> Formulaire de consentement parental affiché
+    <span class="comment">      • Nom complet du parent/tuteur légal
+      • Numéro de CIN (Carte d'Identité Nationale) du parent
+      • Adresse email du parent
+      • Numéro de téléphone du parent
+      • Case à cocher : acceptation des CGU spécifiques mineurs</span>
+
+<span class="highlight">Étape 3</span> <span class="arrow">→</span> Vérification par email/SMS envoyé au parent
+    <span class="comment">      • Le parent reçoit un lien de confirmation unique et sécurisé
+      • Le compte du joueur reste INACTIF tant que le parent n'a pas confirmé
+      • Délai d'expiration : 72 heures</span>
+
+<span class="highlight">Étape 4</span> <span class="arrow">→</span> Document de consentement téléchargeable (PDF)
+    <span class="comment">      • Un document PDF prérempli est généré automatiquement
+      • Le parent peut l'imprimer, le signer et le conserver
+      • Une copie numérique est archivée par Scoutini</span>
+  </div>
+
+  <h2><span class="emoji">🛡️</span> B. Protection des Données Personnelles</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Obligation légale</th>
+        <th>Implémentation dans Scoutini</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Minimisation des données</strong></td>
+        <td>Ne collecter QUE les données strictement nécessaires au scouting sportif (nom, âge, position, stats, vidéos).</td>
+      </tr>
+      <tr>
+        <td><strong>Interdiction de géolocalisation</strong></td>
+        <td>Ne pas tracker la position GPS des mineurs. Seule la ville/gouvernorat déclaratif est autorisé.</td>
+      </tr>
+      <tr>
+        <td><strong>Interdiction de vente de données</strong></td>
+        <td>Ne jamais vendre, louer ou partager les données avec des tiers non autorisés.</td>
+      </tr>
+      <tr>
+        <td><strong>Droit de suppression</strong></td>
+        <td>Le parent/tuteur peut demander la suppression totale et définitive du profil à tout moment.</td>
+      </tr>
+      <tr>
+        <td><strong>Stockage sécurisé</strong></td>
+        <td>Chiffrement des données sensibles (mots de passe bcrypt, CIN parent chiffré en base).</td>
+      </tr>
+      <tr>
+        <td><strong>Déclaration INPDP</strong></td>
+        <td>Soumettre une déclaration formelle auprès de l'Instance Nationale avant le lancement.</td>
+      </tr>
+      <tr>
+        <td><strong>Durée de conservation</strong></td>
+        <td>Définir et respecter une durée maximale de conservation des données. Suppression automatique après inactivité prolongée.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span class="emoji">💬</span> C. Communication Scouts ↔ Mineurs</h2>
+
+  <div class="alert alert-danger no-break">
+    <div class="alert-title">⚠️ POINT LE PLUS SENSIBLE JURIDIQUEMENT</div>
+    <p>
+      Un adulte (scout, recruteur club, responsable d'académie) ne doit <strong>JAMAIS</strong> pouvoir contacter directement un joueur mineur en privé via la plateforme. 
+      Toute communication doit être <strong>filtrée et acheminée via le parent/tuteur légal</strong> exclusivement. 
+      Le non-respect de cette règle expose Scoutini à des poursuites au titre de la Convention de Lanzarote (grooming).
+    </p>
+  </div>
+
+  <h3>Règles impératives de communication :</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">#</th>
+        <th>Règle</th>
+        <th>Détail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Pas de messagerie directe</strong></td>
+        <td>Aucun canal de communication directe scout → joueur mineur. Toute demande passe par le parent/tuteur.</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Demandes d'essai au parent</strong></td>
+        <td>Les invitations à des essais sont envoyées au parent, qui accepte ou refuse. Le joueur est notifié mais ne peut pas répondre seul.</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Pas d'échange de coordonnées</strong></td>
+        <td>Les numéros de téléphone et adresses personnelles ne sont jamais partagés sur la plateforme entre scouts et mineurs.</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Historique auditable</strong></td>
+        <td>Toutes les interactions avec le profil d'un mineur sont enregistrées et accessibles au parent à tout moment.</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Bouton de signalement</strong></td>
+        <td>Un bouton de signalement visible et accessible permet de reporter tout comportement inapproprié.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Flux de demande d'essai (pour un joueur mineur) :</h3>
+
+  <div class="flow-box">
+<span class="highlight">Scout</span> voit un profil intéressant sur la page de recherche
+    <span class="arrow">│</span>
+    <span class="arrow">├──</span> Clique sur <span class="highlight">"Demander un essai"</span>
+    <span class="arrow">│</span>
+    <span class="arrow">├──</span> Notification envoyée au <span class="highlight">PARENT</span> (pas au joueur)
+    <span class="comment">│       • Email et notification in-app envoyés au parent/tuteur
+    │       • Détails inclus : nom du club/scout, date proposée, lieu, type d'essai</span>
+    <span class="arrow">│</span>
+    <span class="arrow">├──</span> Le <span class="highlight">PARENT</span> accepte ou refuse la demande
+    <span class="comment">│       • S'il accepte → coordonnées du PARENT partagées (pas du joueur)
+    │       • S'il refuse → fin du processus, aucune relance autorisée</span>
+    <span class="arrow">│</span>
+    <span class="arrow">└──</span> Tout l'échange est <span class="highlight">enregistré et auditable</span>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>4. Interdictions — Ce que Scoutini NE DOIT PAS Faire</h1>
+
+  <table class="forbidden-table">
+    <thead>
+      <tr>
+        <th style="width: 8%;">❌</th>
+        <th style="width: 40%;">Pratique interdite</th>
+        <th>Raison juridique / Risque</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>❌</td>
+        <td><strong>Permettre aux scouts de contacter directement les mineurs en privé</strong></td>
+        <td>Risque de grooming / sollicitation de mineur. Infraction au titre de la Convention de Lanzarote.</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Afficher l'adresse exacte ou le nom de l'école du joueur</strong></td>
+        <td>Données trop sensibles. Violation du principe de minimisation (Loi 2004-63).</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Permettre l'inscription sans vérification d'âge</strong></td>
+        <td>Obligation légale de consentement parental. Non-conformité avec la Charte 2025.</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Partager les vidéos des mineurs sur les réseaux sociaux sans accord</strong></td>
+        <td>Violation du droit à l'image du mineur. Consentement spécifique requis du tuteur.</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Permettre la négociation de contrats via la plateforme</strong></td>
+        <td>La FTF et la FIFA encadrent strictement les contrats de mineurs. Scoutini ne peut pas servir d'intermédiaire contractuel.</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Collecter des données biométriques</strong></td>
+        <td>Empreintes digitales, reconnaissance faciale = données sensibles interdites sans autorisation préalable de l'INPDP.</td>
+      </tr>
+      <tr>
+        <td>❌</td>
+        <td><strong>Autoriser un scout non vérifié à accéder aux profils complets</strong></td>
+        <td>Risque d'usurpation d'identité. Politique de « safer recruitment » recommandée par la FIFA.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>5. Fonctionnalités de Protection à Implémenter</h1>
+
+  <h2><span class="emoji">🚀</span> Phase 1 — Avant le Lancement (Obligatoire)</h2>
+
+  <div class="checklist no-break">
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Vérification d'âge</strong> à l'inscription (champ date de naissance obligatoire avec calcul automatique)</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Formulaire de consentement parental</strong> déclenché si le joueur a moins de 18 ans</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Email/SMS de confirmation parentale</strong> — Le compte reste inactif tant que le parent n'a pas confirmé</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Page CGU spécifique mineurs</strong> (Conditions Générales d'Utilisation adaptées)</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Politique de confidentialité</strong> claire, accessible, conforme à la Loi 2004-63</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Communication filtrée</strong> — Les demandes d'essai sont envoyées au parent, pas au joueur</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Bouton de signalement</strong> visible sur chaque profil et conversation</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Déclaration INPDP</strong> — Soumettre la déclaration de traitement de données</span></div>
+  </div>
+
+  <h2><span class="emoji">📈</span> Phase 2 — Améliorations (Recommandé)</h2>
+
+  <div class="checklist no-break">
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Tableau de bord parent</strong> — Le parent peut voir, gérer et supprimer le profil de son enfant</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Historique d'audit</strong> — Logs de toutes les interactions avec le profil du mineur</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Vérification des scouts/clubs</strong> — Badge « Vérifié ✓ » après vérification d'identité</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Modération de contenu</strong> — Modération automatique et manuelle des vidéos et commentaires</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Rapports d'activité parents</strong> — Rapports périodiques envoyés aux parents par email</span></div>
+    <div class="checklist-item"><div class="check-box"></div><span><strong>Système de blocage</strong> — Le parent peut bloquer un scout/club spécifique</span></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 6 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>6. Documents Juridiques à Préparer</h1>
+
+  <div class="alert alert-important no-break">
+    <div class="alert-title">📝 RECOMMANDATION FORTE</div>
+    <p>
+      Ces documents doivent être rédigés par un <strong>avocat spécialisé en droit du sport et en droit numérique</strong> en Tunisie. 
+      Ils doivent être affichés et accessibles sur la plateforme à tout moment.
+    </p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 5%;">#</th>
+        <th style="width: 35%;">Document</th>
+        <th>Contenu attendu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>Conditions Générales d'Utilisation (CGU)</strong></td>
+        <td>Version spécifique pour les mineurs, rédigée dans un langage accessible. Doit inclure les droits du parent/tuteur.</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>Politique de Confidentialité</strong></td>
+        <td>Conforme à la Loi Organique 2004-63. Doit détailler les types de données collectées, la finalité, la durée de conservation et les droits des utilisateurs.</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>Formulaire de Consentement Parental</strong></td>
+        <td>Document PDF téléchargeable et imprimable. Doit inclure l'identité du mineur, l'identité du parent, les droits accordés et la signature.</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>Charte de Bonne Conduite</strong></td>
+        <td>Code de conduite pour les scouts et clubs. Définit les comportements acceptables et les sanctions en cas de manquement.</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>Politique de Signalement</strong></td>
+        <td>Procédure claire en cas de comportement inapproprié. Inclut les délais de traitement et les mesures conservatoires.</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>Politique de Conservation des Données</strong></td>
+        <td>Durée maximale de conservation, modalités de suppression automatique, procédure de demande de suppression par le parent.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <!-- SECTION 7 -->
+  <!-- ============================================ -->
+  <h1>7. Contacts &amp; Ressources Utiles</h1>
+
+  <div class="contact-grid">
+    <div class="contact-card no-break">
+      <h4>🏛️ INPDP</h4>
+      <p>Instance Nationale de Protection des Données Personnelles</p>
+      <p><a href="https://www.inpdp.tn">www.inpdp.tn</a></p>
+    </div>
+    <div class="contact-card no-break">
+      <h4>⚽ FTF</h4>
+      <p>Fédération Tunisienne de Football</p>
+      <p><a href="https://www.ftf.org.tn">www.ftf.org.tn</a></p>
+    </div>
+    <div class="contact-card no-break">
+      <h4>🌍 FIFA Guardians</h4>
+      <p>Toolkit de sauvegarde FIFA</p>
+      <p><a href="https://www.fifa.com/social-impact/fifa-guardians">fifa.com/social-impact/fifa-guardians</a></p>
+    </div>
+    <div class="contact-card no-break">
+      <h4>👨‍👩‍👧 Ministère de la Femme, Famille &amp; Enfance</h4>
+      <p>Questions liées à la Charte Nationale 2025</p>
+      <p><a href="https://www.femmes.gov.tn">www.femmes.gov.tn</a></p>
+    </div>
+    <div class="contact-card no-break">
+      <h4>📜 Code de Protection de l'Enfance</h4>
+      <p>Consultable via le Journal Officiel</p>
+      <p><a href="https://www.legislation.tn">www.legislation.tn</a></p>
+    </div>
+    <div class="contact-card no-break">
+      <h4>🏟️ Ministère de la Jeunesse &amp; du Sport</h4>
+      <p>Agrément et cahier des charges des centres</p>
+      <p><a href="https://www.jeunesse.gov.tn">www.jeunesse.gov.tn</a></p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECTION 8 -->
+  <!-- ============================================ -->
+  <div class="page-break"></div>
+  <h1>8. Résumé des Priorités</h1>
+
+  <div class="priority-grid">
+    <div class="priority-card urgent no-break">
+      <h4>🔴 AVANT LE LANCEMENT (Obligatoire)</h4>
+      <ul>
+        <li>Consentement parental vérifié (email/SMS)</li>
+        <li>Vérification d'âge à l'inscription</li>
+        <li>CGU + Politique de confidentialité rédigées</li>
+        <li>Communication filtrée via le parent</li>
+        <li>Déclaration à l'INPDP soumise</li>
+        <li>Bouton de signalement actif</li>
+      </ul>
+    </div>
+    <div class="priority-card recommended no-break">
+      <h4>🔵 APRÈS LE LANCEMENT (Recommandé)</h4>
+      <ul>
+        <li>Tableau de bord dédié au parent</li>
+        <li>Vérification d'identité des scouts/clubs</li>
+        <li>Modération automatique du contenu</li>
+        <li>Rapports d'activité périodiques</li>
+        <li>Système de blocage</li>
+        <li>Historique d'audit complet</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-success no-break">
+    <div class="alert-title">✅ RECOMMANDATION FINALE</div>
+    <p>
+      Avant de lancer Scoutini, il est <strong>impératif</strong> de prendre rendez-vous avec :<br>
+      <strong>1.</strong> Un <strong>avocat spécialisé en droit du sport</strong> en Tunisie pour la rédaction des documents juridiques<br>
+      <strong>2.</strong> L'<strong>INPDP</strong> (<a href="https://www.inpdp.tn" style="color: #065F46;">inpdp.tn</a>) pour déclarer le traitement de données et obtenir une validation de conformité<br>
+      <strong>3.</strong> La <strong>FTF</strong> (<a href="https://www.ftf.org.tn" style="color: #065F46;">ftf.org.tn</a>) pour vérifier la conformité de la plateforme avec les règlements fédéraux
+    </p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================ -->
+  <div class="footer">
+    <p>
+      <strong>Scoutini TN</strong> — Guide Juridique : Protection des Mineurs<br>
+      Document interne v1.0 — Juin 2026<br>
+      © 2026 Scoutini. Tous droits réservés.
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+// Prisma Schema for Scoutini
+// Plateforme de détection des talents footballistiques en Tunisie
+// Using SQLite for local dev (switch to PostgreSQL for production)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USER - Compte de base pour tous les rôles
+// ============================================
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      String   @default("PLAYER") // PLAYER, SCOUT, ACADEMY, CLUB, ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  playerProfile PlayerProfile?
+  scoutProfile  ScoutProfile?
+  favorites     Favorite[]      @relation("ScoutFavorites")
+  sentTrials    TrialRequest[]  @relation("TrialSender")
+}
+
+// ============================================
+// PLAYER PROFILE - CV Football numérique
+// ============================================
+model PlayerProfile {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  firstName     String
+  lastName      String
+  dateOfBirth   String?
+  phone         String?
+  city          String?
+  region        String?
+  nationality   String   @default("Tunisienne")
+  height        Int?
+  weight        Int?
+  position      String?
+  preferredFoot String?
+  currentClub   String?
+  avatar        String?
+  bio           String?
+  
+  // Informations parentales (pour la protection des mineurs)
+  parentName       String?
+  parentNationalId String?
+  parentPhone      String?
+  parentEmail      String?
+  parentalConsent  Boolean  @default(false)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stats     PlayerStats?
+  videos    Video[]
+  favoredBy Favorite[]     @relation("FavoritedPlayer")
+  trials    TrialRequest[] @relation("TrialPlayer")
+}
+
+// ============================================
+// PLAYER STATS - Métriques de performance
+// ============================================
+model PlayerStats {
+  id        String @id @default(uuid())
+  profileId String @unique
+
+  speed      Int @default(50)
+  technique  Int @default(50)
+  endurance  Int @default(50)
+  passing    Int @default(50)
+  shooting   Int @default(50)
+  dribbling  Int @default(50)
+  defending  Int @default(50)
+  physical   Int @default(50)
+
+  matchesPlayed Int @default(0)
+  goals         Int @default(0)
+  assists       Int @default(0)
+
+  updatedAt DateTime @updatedAt
+
+  profile PlayerProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// SCOUT / CLUB / ACADEMY PROFILE
+// ============================================
+model ScoutProfile {
+  id           String  @id @default(uuid())
+  userId       String  @unique
+  name         String
+  organization String?
+  city         String?
+  region       String?
+  phone        String?
+  avatar       String?
+  bio          String?
+  verified     Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// VIDEO - Vidéos highlights des joueurs
+// ============================================
+model Video {
+  id           String   @id @default(uuid())
+  playerId     String
+  title        String
+  description  String?
+  videoUrl     String
+  thumbnailUrl String?
+  category     String   @default("HIGHLIGHT")
+  duration     Int?
+  createdAt    DateTime @default(now())
+
+  player PlayerProfile @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// FAVORITE - Joueurs favoris des scouts
+// ============================================
+model Favorite {
+  id        String   @id @default(uuid())
+  scoutId   String
+  playerId  String
+  createdAt DateTime @default(now())
+
+  scout  User          @relation("ScoutFavorites", fields: [scoutId], references: [id], onDelete: Cascade)
+  player PlayerProfile @relation("FavoritedPlayer", fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([scoutId, playerId])
+}
+
+// ============================================
+// TRIAL REQUEST - Demandes d'essai
+// ============================================
+model TrialRequest {
+  id        String   @id @default(uuid())
+  fromId    String
+  playerId  String
+  message   String?
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  from   User          @relation("TrialSender", fields: [fromId], references: [id], onDelete: Cascade)
+  player PlayerProfile @relation("TrialPlayer", fields: [playerId], references: [id], onDelete: Cascade)
+}

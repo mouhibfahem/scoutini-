@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="ballGrad" x1="14" y1="14" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="handleGrad" x1="44" y1="44" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.35" cy="0.3" r="0.5">
+      <stop offset="0%" stop-color="white" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#059669" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Outer ring glow -->
+  <circle cx="28" cy="28" r="22" stroke="#10b981" stroke-width="1" fill="none" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- Main magnifying glass ring -->
+  <circle cx="28" cy="28" r="18" stroke="url(#ringGrad)" stroke-width="3.5" fill="none" filter="url(#shadow)"/>
+  <circle cx="28" cy="28" r="18" stroke="white" stroke-width="0.5" fill="none" opacity="0.15"/>
+
+  <!-- Soccer ball -->
+  <circle cx="28" cy="28" r="13" fill="url(#ballGrad)"/>
+  
+  <!-- Ball pentagon patterns -->
+  <polygon points="28,18.5 32.5,22 31,27 25,27 23.5,22" fill="#047857" opacity="0.75"/>
+  <polygon points="21,30 23,24.5 19.5,21 15.5,24.5 17,30" fill="#047857" opacity="0.55"/>
+  <polygon points="35,30 33,24.5 36.5,21 40.5,24.5 39,30" fill="#047857" opacity="0.55"/>
+  <polygon points="23,35.5 25.5,30.5 30.5,30.5 33,35.5 28,39" fill="#047857" opacity="0.65"/>
+  <polygon points="17.5,33 19,30 22,33 20.5,37 16.5,36" fill="#047857" opacity="0.45"/>
+  <polygon points="38.5,33 37,30 34,33 35.5,37 39.5,36" fill="#047857" opacity="0.45"/>
+
+  <!-- Ball seam lines -->
+  <path d="M28,18.5 L28,15.5" stroke="#065f46" stroke-width="0.6" opacity="0.4"/>
+  <path d="M23.5,22 L19.5,21" stroke="#065f46" stroke-width="0.6" opacity="0.4"/>
+  <path d="M32.5,22 L36.5,21" stroke="#065f46" stroke-width="0.6" opacity="0.4"/>
+  <path d="M25,27 L23,24.5" stroke="#065f46" stroke-width="0.6" opacity="0.3"/>
+  <path d="M31,27 L33,24.5" stroke="#065f46" stroke-width="0.6" opacity="0.3"/>
+
+  <!-- Ball shine/highlight -->
+  <circle cx="28" cy="28" r="13" fill="url(#shine)"/>
+  <ellipse cx="23" cy="22" rx="4.5" ry="2.5" fill="white" opacity="0.2" transform="rotate(-25 23 22)"/>
+
+  <!-- Magnifying glass handle -->
+  <line x1="42" y1="42" x2="59" y2="59" stroke="url(#handleGrad)" stroke-width="6" stroke-linecap="round"/>
+  <line x1="42" y1="42" x2="59" y2="59" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.2"/>
+  
+  <!-- Handle detail -->
+  <line x1="43.5" y1="43.5" x2="45" y2="45" stroke="#6ee7b7" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Decorative corner dots -->
+  <circle cx="8" cy="8" r="1.2" fill="#10b981" opacity="0.3"/>
+  <circle cx="56" cy="8" r="1" fill="#10b981" opacity="0.2"/>
+  <circle cx="8" cy="50" r="1" fill="#10b981" opacity="0.2"/>
+</svg>
